@@ -1,0 +1,2 @@
+- [ ] Add `http_method_names` to the views of each app.
+- [ ] Add response models to views.
