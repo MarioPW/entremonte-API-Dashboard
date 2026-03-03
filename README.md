@@ -23,7 +23,7 @@ To ensure the project runs correctly, it’s essential to have the appropriate v
 
 Required Python Version:
 Python 3.8 to 3.11 is required for compatibility with Django 4.2.
-Django 4.2 does not support Python versions later than 3.11, so using Python 3.12 or higher will cause compatibility issues.
+Django 4.2 does not support Python versions later than 3.11, so using Python 3.12 or higher might cause compatibility issues.
 
 To check your Python version:
 - Windows:

@@ -14,6 +14,7 @@ from pathlib import Path
 from cloudinary.uploader import upload
 from cloudinary.utils import cloudinary_url
 import os
+import dj_database_url
 import environ
 from datetime import timedelta
 from django.conf import settings
@@ -111,12 +112,21 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if not DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+        default=env('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=not DEBUG
+    )
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -177,6 +187,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5501",
     "http://127.0.0.1:5500",
     "http://localhost:5500",
+    "https://entremontecabañas.com"
 ]
 CORS_ALLOW_CREDENTIALS = True
 
