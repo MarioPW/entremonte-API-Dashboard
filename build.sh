@@ -17,8 +17,5 @@ python manage.py migrate
 
 # 4. Crear superusuario (Solo si las variables están presentes)
 if [ "$DJANGO_SUPERUSER_USERNAME" ]; then
-    python manage.py createsuperuser \
-        --noinput \
-        --username "$DJANGO_SUPERUSER_USERNAME" \
-        --email "$DJANGO_SUPERUSER_EMAIL" || true
+    python manage.py createsuperuser --noinput || true
 fi
