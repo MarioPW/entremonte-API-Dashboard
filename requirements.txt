@@ -38,3 +38,4 @@ sqlparse==0.4.4
 tzdata==2023.3
 uritemplate==4.2.0
 urllib3==1.26.15
+whitenoise==6.12.0
