@@ -18,6 +18,8 @@ python manage.py migrate
 python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='$DJANGO_SUPERUSER_USERNAME').delete()"
 
 # 4. Crear superusuario (Solo si las variables están presentes)
-if [ "$DJANGO_SUPERUSER_USERNAME" ]; then
-    python manage.py createsuperuser --noinput || true
+if [ "$DJANGO_SUPERUSER_EMAIL" ]; then
+    python manage.py createsuperuser \
+        --noinput \
+        --email "$DJANGO_SUPERUSER_EMAIL" || true
 fi
