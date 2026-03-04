@@ -15,8 +15,7 @@ python manage.py makemigrations
 # 4. Aplicar las migraciones a la base de datos de Render
 python manage.py migrate
 
-python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='$DJANGO_SUPERUSER_USERNAME').delete()"
-
+python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='$DJANGO_SUPERUSER_EMAIL').delete()"
 # 4. Crear superusuario (Solo si las variables están presentes)
 if [ "$DJANGO_SUPERUSER_EMAIL" ]; then
     python manage.py createsuperuser \
