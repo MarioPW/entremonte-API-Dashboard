@@ -6,17 +6,16 @@ set -o errexit
 pip install -r requirements.txt
 
 # 2. Recopilar archivos estáticos
+# Necesario para que WhiteNoise sirva tus CSS/JS en Render
 python manage.py collectstatic --no-input
 
-# 3. Generar migraciones (Primero users para evitar el ValueError de dependencias)
-python manage.py makemigrations users
-python manage.py makemigrations
-
-# 4. Aplicar las migraciones a la base de datos de Render
+# 3. Aplicar migraciones
+# Solo aplicamos las migraciones que ya existen en tu código (enviadas por Git)
 python manage.py migrate
 
-python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(email='$DJANGO_SUPERUSER_EMAIL').delete()"
-# 4. Crear superusuario (Solo si las variables están presentes)
+# 4. Creación de superusuario (Opcional/Segura)
+# El flag || true evita que el script falle si el usuario ya existe.
+# Ya NO borramos al usuario antes de este paso.
 if [ "$DJANGO_SUPERUSER_EMAIL" ]; then
     python manage.py createsuperuser \
         --noinput \
