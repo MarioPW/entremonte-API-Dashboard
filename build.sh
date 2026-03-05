@@ -19,5 +19,6 @@ python manage.py migrate
 if [ "$DJANGO_SUPERUSER_EMAIL" ]; then
     python manage.py createsuperuser \
         --noinput \
-        --email "$DJANGO_SUPERUSER_EMAIL" || true
+        --email "$DJANGO_SUPERUSER_EMAIL" \
+        --first_name "Admin" || true
 fi
