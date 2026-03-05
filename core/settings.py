@@ -39,10 +39,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
-
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS_DEV")
-
+DEBUG = env("DEBUG")
 
 # Application definition
 
@@ -113,7 +110,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if not DEBUG:
+if DEBUG:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
@@ -123,10 +120,10 @@ if not DEBUG:
 else:
     DATABASES = {
         'default': dj_database_url.config(
-        default=env('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=not DEBUG
-    )
+            default=env('DATABASE_URL'),
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
 
 # Password validation
@@ -290,5 +287,7 @@ AUTH_USER_MODEL = "users.UserAccount"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-if not DEBUG:
+if DEBUG:
+    ALLOWED_HOSTS = env.list("ALLOWED_HOSTS_DEV", default=["127.0.0.1", "localhost"])
+else:
     ALLOWED_HOSTS = env.list("ALLOWED_HOSTS_DEPLOY")
