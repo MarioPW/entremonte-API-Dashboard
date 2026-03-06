@@ -194,6 +194,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "https://entremontecabañas.com",
     "https://xn--entremontecabaas-rub.com",
+    "https://xn--entremontecabaas-kub.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
