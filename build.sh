@@ -14,8 +14,6 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 # 4. Creación de superusuario (Opcional/Segura)
-# El flag || true evita que el script falle si el usuario ya existe.
-# Ya NO borramos al usuario antes de este paso.
 python manage.py shell -c "
 from django.contrib.auth import get_user_model;
 User = get_user_model();

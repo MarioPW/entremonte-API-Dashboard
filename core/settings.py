@@ -195,6 +195,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://entremontecabañas.com",
     "https://xn--entremontecabaas-rub.com",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://entremontecabañas.com",
+    "https://xn--entremontecabaas-rub.com",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # Images Storage
