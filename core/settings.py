@@ -200,6 +200,7 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://entremontecabañas.com",
     "https://xn--entremontecabaas-rub.com",
+    "https://xn--entremontecabaas-kub.com"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
