@@ -32,13 +32,12 @@ class Cabin_serializer(serializers.ModelSerializer):
         return [review.comment for review in obj.reviews.all()]
 
 class Review_serializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
     class Meta:
         model = Cabin_review
         fields = [
             'rating',
             'comment',
-            'user',
+            'first_name',
         ]
 
 class Cabin_image_serializer(serializers.ModelSerializer):
