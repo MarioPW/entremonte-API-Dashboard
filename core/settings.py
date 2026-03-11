@@ -185,21 +185,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Cors authorization servers
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5173",
-    "http://localhost:5173",
-    "http://127.0.0.1:5501",
-    "http://localhost:5501",
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-    "https://entremontecabañas.com",
-    "https://xn--entremontecabaas-rub.com",
-    "https://xn--entremontecabaas-kub.com"
-]
+CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS".split(","))
 
 CSRF_TRUSTED_ORIGINS = [
     "https://entremontecabañas.com",
-    "https://xn--entremontecabaas-rub.com",
     "https://xn--entremontecabaas-kub.com"
 ]
 
@@ -303,4 +292,4 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 if DEBUG:
     ALLOWED_HOSTS = env.list("ALLOWED_HOSTS_DEV", default=["127.0.0.1", "localhost"])
 else:
-    ALLOWED_HOSTS = env.list("ALLOWED_HOSTS_DEPLOY")
+    ALLOWED_HOSTS = env.list("ALLOWED_HOSTS_DEPLOY", default=["entremonte-api-dashboard.onrender.com"])
