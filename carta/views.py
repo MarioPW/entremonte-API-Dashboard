@@ -5,7 +5,9 @@ from .models import Item, Category
 class Item_view(viewsets.ModelViewSet):
     serializer_class = Item_serializer
     queryset = Item.objects.filter(available=True)
+    http_method_names = ['get']
 
 class Category_view(viewsets.ModelViewSet):
     serializer_class = Category_serializer
     queryset = Category.objects.filter(available=True)
+    http_method_names = ['get']

@@ -155,6 +155,7 @@ entorno/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+datos_entremonte.json
 
 # Pyre type checker
 .pyre/
